@@ -1,0 +1,14 @@
+# LocalStack — emulated AWS, entirely local and free.
+# Only the services this module uses are enabled. Nothing billable is ever created.
+services:
+  localstack:
+    image: localstack/localstack:3
+    container_name: cloudlab-localstack
+    ports:
+      - "4566:4566"            # single edge port for all AWS APIs
+    environment:
+      - SERVICES=s3,iam,sts,ec2,secretsmanager,logs
+      - DEBUG=0
+      - AWS_DEFAULT_REGION=us-east-1
+    # No docker.sock mount needed for these services (keeps it portable across
+    # Docker Desktop / Colima on macOS).

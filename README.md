@@ -56,10 +56,15 @@ Plus **[flaws.cloud](docs/flaws-cloud.md)** — a free hosted AWS CTF (nothing t
 
 **Prerequisites** — install once (see [`tools/check-prereqs.sh`](tools/check-prereqs.sh)):
 ```bash
-# macOS (Homebrew) — recommended, this is where you'll work
-brew install terraform awscli-local localstack checkov tfsec trivy minikube kubectl colima
-brew install --cask docker           # or use colima for a free daemon
-pipx install prowler scoutsuite
+# macOS (Homebrew) — recommended, this is where you'll work.
+brew tap hashicorp/tap
+brew install git awscli kubectl minikube trivy colima docker docker-compose pipx hashicorp/tap/terraform
+colima start                          # free Docker engine (no Docker Desktop needed)
+
+# Python-based tools via pipx. On macOS, keep pipx OUT of the default
+# "~/Library/Application Support/pipx" path — the space breaks script shebangs:
+export PIPX_HOME="$HOME/.local/pipx" PIPX_BIN_DIR="$HOME/.local/bin"
+pipx install checkov awscli-local prowler scoutsuite
 ```
 ```bash
 # verify your toolchain

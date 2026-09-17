@@ -1,0 +1,41 @@
+# ---- Terraform ----
+**/.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+!*.tfvars.example
+.terraform.lock.hcl
+
+# ---- Credentials / secrets (NEVER commit) ----
+.env
+*.pem
+*.key
+credentials
+aws-credentials*
+*_creds*
+*.secret
+
+# ---- Scanner / tool output ----
+prowler-output/
+output/
+scoutsuite-report*/
+*-report.html
+checkov-report.*
+trivy-report.*
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- Cloned at runtime (not vendored) ----
+modules/03-kubernetes-goat/kubernetes-goat/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

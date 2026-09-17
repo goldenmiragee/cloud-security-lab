@@ -1,0 +1,10 @@
+# Normalize line endings; keep shell/IaC LF so they run on Linux/macOS.
+* text=auto eol=lf
+*.sh   text eol=lf
+*.tf   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.md   text eol=lf
+*.py   text eol=lf
+*.ps1  text eol=crlf
+*.png binary

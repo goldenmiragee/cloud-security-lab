@@ -3,8 +3,11 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# use "docker compose" (plugin) if available, else the standalone "docker-compose"
+if docker compose version >/dev/null 2>&1; then DC="docker compose"; else DC="docker-compose"; fi
+
 echo "[up] starting LocalStack (Docker)..."
-docker compose up -d
+$DC up -d
 
 echo "[up] waiting for LocalStack S3 to be ready..."
 for _ in $(seq 1 30); do

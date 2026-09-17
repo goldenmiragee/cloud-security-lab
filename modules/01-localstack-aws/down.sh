@@ -3,10 +3,12 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 
+if docker compose version >/dev/null 2>&1; then DC="docker compose"; else DC="docker-compose"; fi
+
 echo "[down] terraform destroy..."
 ( cd terraform && terraform destroy -auto-approve ) || true
 
 echo "[down] stopping LocalStack..."
-docker compose down -v || true
+$DC down -v || true
 
 echo "[down] done."
